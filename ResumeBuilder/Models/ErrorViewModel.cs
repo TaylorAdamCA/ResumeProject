@@ -1,6 +1,6 @@
 using System;
 
-namespace ResumeProject.Models
+namespace ResumeBuilder.Models
 {
     public class ErrorViewModel
     {

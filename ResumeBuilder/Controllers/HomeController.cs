@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ResumeProject.Models;
+using ResumeBuilder.Models;
 
-namespace ResumeProject.Controllers
+namespace ResumeBuilder.Controllers
 {
     public class HomeController : Controller
     {
