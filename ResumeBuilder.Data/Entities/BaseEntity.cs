@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
-namespace ResumeBuilder.lib.Entities
+namespace ResumeBuilder.Data.Entities
 {
     public class BaseEntity
     {

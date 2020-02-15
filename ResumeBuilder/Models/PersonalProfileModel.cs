@@ -1,23 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using ResumeBuilder.Data;
+using ResumeBuilder.Data.Entities;
 
-namespace ResumeBuilder.lib.Entities
+namespace ResumeBuilder.Models
 {
-    public class PersonalProfile : BaseEntity
+    public class PersonalProfileModel
     {
         //TODO Upload a picture
 
         [Required]
         [Display(Name = "First Name")]
-        [Column(TypeName = "varchar(128)")]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "First Last")]
-        [Column(TypeName = "varchar(128)")]
         public string LastName { get; set; }
 
         [Required]
@@ -30,25 +31,24 @@ namespace ResumeBuilder.lib.Entities
 
         [Required]
         [Display(Name = "Address")]
-        [Column(TypeName = "varchar(256)")]
         public string Address { get; set; }
 
         [Required]
         [Display(Name = "Country")]
-        [Column(TypeName = "varchar(74)")]
         public string Country { get; set; }
-
-        [Display(Name = "Country Code")]
-        [Column(TypeName = "varchar(2)")]
-        public string? CountryCode { get; set; }
 
         [Required]
         [Display(Name = "Postal Code")]
-        [Column(TypeName = "varchar(32)")]
         public string PostalCode { get; set; }
 
         [Display(Name = "Full Name")]
         public string FullName => LastName + " " + FirstName;
+
+        public List<SelectListItem> CountriesList => CountryArrays.Names.Select((a, i) => new SelectListItem
+        {
+            Value = CountryArrays.Abbreviations[i],
+            Text = a
+        }).ToList();
 
         /// <summary>
         /// Links to github, linked-in, etc

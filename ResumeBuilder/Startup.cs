@@ -12,6 +12,8 @@ using ResumeBuilder.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ResumeBuilder.Data.Services;
+using ResumeBuilder.Data.Services.Interfaces;
 
 namespace ResumeBuilder
 {
@@ -34,6 +36,9 @@ namespace ResumeBuilder
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            // Services
+            services.AddTransient<IPersonalProfileService, PersonalProfileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

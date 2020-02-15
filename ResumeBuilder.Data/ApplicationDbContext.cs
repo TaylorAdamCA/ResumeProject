@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ResumeBuilder.lib.Entities;
+using ResumeBuilder.Data.Entities;
 
 namespace ResumeBuilder.Data
 {
