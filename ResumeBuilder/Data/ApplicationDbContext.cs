@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using ResumeBuilder.lib.Entities;
 
 namespace ResumeBuilder.Data
 {
@@ -12,5 +13,7 @@ namespace ResumeBuilder.Data
             : base(options)
         {
         }
+
+        public DbSet<PersonalProfile> PersonalProfiles { get; set; }
     }
 }
