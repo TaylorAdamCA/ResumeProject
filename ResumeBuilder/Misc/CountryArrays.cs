@@ -1,4 +1,4 @@
-﻿namespace ResumeBuilder.Data
+﻿namespace ResumeBuilder.Misc
 {
     public static class CountryArrays
     {

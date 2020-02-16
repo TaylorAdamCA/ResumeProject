@@ -1,6 +1,4 @@
-using System;
-
-namespace ResumeBuilder.Models
+namespace ResumeBuilder.Models.ViewModels
 {
     public class ErrorViewModel
     {

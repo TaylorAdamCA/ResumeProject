@@ -17,7 +17,7 @@ namespace ResumeBuilder.Data.Services
         /// </summary>
 
         public async Task<PersonalProfile> Create(string contextId, string firstName, string lastName,
-            int phoneNumber, string emailAddress, string address, string country,
+            string phoneNumber, string emailAddress, string address, string country,
             string countryCode, string postalCode, List<Links> links)
         {
             PersonalProfile personalProfile = new PersonalProfile
@@ -38,6 +38,16 @@ namespace ResumeBuilder.Data.Services
             };
 
             return await AddAsync(personalProfile);
+        }
+
+        /// <summary>
+        /// Gets the personal profile corresponding to the user currently signed in
+        /// </summary>
+        /// <param name="contextId"></param>
+        /// <returns></returns>
+        public async Task<PersonalProfile> GetProfileByContextIdAsync(string userId)
+        {
+            return await FindAsync(p => p.ContextId == userId);
         }
     }
 }

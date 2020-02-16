@@ -17,7 +17,8 @@ namespace ResumeBuilder.Data.Entities
         public string LastName { get; set; }
 
         [Required]
-        public int PhoneNumber { get; set; }
+        [Column(TypeName = "varchar(64)")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         public string EmailAddress { get; set; }

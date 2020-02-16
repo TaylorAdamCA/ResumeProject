@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ResumeBuilder.Data;
 using ResumeBuilder.Data.Entities;
+using ResumeBuilder.Misc;
+using ResumeBuilder.Models.Misc;
 
-namespace ResumeBuilder.Models
+namespace ResumeBuilder.Models.ViewModels
 {
     public class PersonalProfileModel
     {
@@ -23,7 +22,7 @@ namespace ResumeBuilder.Models
 
         [Required]
         [Display(Name = "Phone Number")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "The email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
@@ -33,9 +32,8 @@ namespace ResumeBuilder.Models
         [Display(Name = "Address")]
         public string Address { get; set; }
 
-        [Required]
         [Display(Name = "Country")]
-        public string Country { get; set; }
+        public CountryModel Country { get; set; }
 
         [Required]
         [Display(Name = "Postal Code")]
@@ -43,12 +41,6 @@ namespace ResumeBuilder.Models
 
         [Display(Name = "Full Name")]
         public string FullName => LastName + " " + FirstName;
-
-        public List<SelectListItem> CountriesList => CountryArrays.Names.Select((a, i) => new SelectListItem
-        {
-            Value = CountryArrays.Abbreviations[i],
-            Text = a
-        }).ToList();
 
         /// <summary>
         /// Links to github, linked-in, etc

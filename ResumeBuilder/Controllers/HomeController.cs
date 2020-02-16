@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ResumeBuilder.Models;
+using ResumeBuilder.Models.ViewModels;
 
 namespace ResumeBuilder.Controllers
 {
