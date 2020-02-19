@@ -6,14 +6,13 @@ using System.Text;
 
 namespace ResumeBuilder.Data.Entities
 {
-    public class Language : BaseEntity
+    public class Achievement : BaseEntity
     {
         [Required]
         [Column(TypeName = "varchar(128)")]
         public string Name { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar(128)")]
-        public string Proficiency { get; set; }
+        public string Description { get; set; }
     }
 }

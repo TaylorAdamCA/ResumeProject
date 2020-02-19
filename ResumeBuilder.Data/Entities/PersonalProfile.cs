@@ -41,6 +41,6 @@ namespace ResumeBuilder.Data.Entities
         /// <summary>
         /// Links to github, linked-in, etc
         /// </summary>
-        public List<Links> Links { get; set; }
+        public List<Link> Links { get; set; }
     }
 }

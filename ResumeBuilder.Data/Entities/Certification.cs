@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ResumeBuilder.Data.Entities
 {
-    public class Language : BaseEntity
+    public class Certification : BaseEntity
     {
         [Required]
         [Column(TypeName = "varchar(128)")]
@@ -14,6 +14,13 @@ namespace ResumeBuilder.Data.Entities
 
         [Required]
         [Column(TypeName = "varchar(128)")]
-        public string Proficiency { get; set; }
+        public string CertificateAuthority { get; set; }
+
+        [Required]
+        [Column(TypeName = "varchar(128)")]
+        public string Level { get; set; }
+
+        [Required]
+        public DateTime DateReceived { get; set; }
     }
 }

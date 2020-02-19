@@ -18,7 +18,7 @@ namespace ResumeBuilder.Data.Services
 
         public async Task<PersonalProfile> Create(string contextId, string firstName, string lastName,
             string phoneNumber, string emailAddress, string address, string country,
-            string countryCode, string postalCode, List<Links> links)
+            string countryCode, string postalCode, List<Link> links)
         {
             PersonalProfile personalProfile = new PersonalProfile
             {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ResumeBuilder.Data.Entities
 {
-    public class Links : BaseEntity
+    public class Link : BaseEntity
     {
         [Required]
         [Column(TypeName = "varchar(256)")]
