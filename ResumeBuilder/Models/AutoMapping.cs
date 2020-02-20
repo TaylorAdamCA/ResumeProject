@@ -17,6 +17,8 @@ namespace ResumeBuilder.Models
             CreateMap<PersonalProfile, PersonalProfileModel>();
             CreateMap<ResumeViewModel, Resume>();
             CreateMap<Resume, ResumeViewModel>();
+            CreateMap<Experience, ExperienceViewModel>();
+            CreateMap<ExperienceViewModel, Experience>();
         }
     }
 }

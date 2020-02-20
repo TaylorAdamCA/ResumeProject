@@ -27,7 +27,7 @@ namespace ResumeBuilder.Controllers.Resume
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
-            var resumes = await _resumeService.FindAllAsync(r => r.ContextId == User.FindFirstValue(ClaimTypes.NameIdentifier));
+            var resumes = await _resumeService.FindAllIncludingAllAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
             return View(resumes);
         }
 
@@ -60,7 +60,7 @@ namespace ResumeBuilder.Controllers.Resume
         // GET: Resume/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            return View(await _resumeService.FindAsync(r => r.Id == id));
+            return View(await _resumeService.FindIncludingAllAsync(r => r.Id == id));
         }
     }
 }

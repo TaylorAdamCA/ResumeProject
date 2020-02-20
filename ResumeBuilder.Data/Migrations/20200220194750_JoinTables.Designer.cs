@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ResumeBuilder.Data;
 
 namespace ResumeBuilder.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200220194750_JoinTables")]
+    partial class JoinTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -301,6 +303,9 @@ namespace ResumeBuilder.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ResumeId")
+                        .HasColumnType("varchar(68)");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -309,6 +314,8 @@ namespace ResumeBuilder.Data.Migrations
                         .HasColumnType("varchar(128)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("CommunityServices");
                 });
@@ -334,6 +341,9 @@ namespace ResumeBuilder.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("ResumeId")
+                        .HasColumnType("varchar(68)");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
@@ -342,6 +352,8 @@ namespace ResumeBuilder.Data.Migrations
                         .HasColumnType("varchar(128)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Educations");
                 });
@@ -404,7 +416,12 @@ namespace ResumeBuilder.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(128)");
 
+                    b.Property<string>("ResumeId")
+                        .HasColumnType("varchar(68)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Languages");
                 });
@@ -523,7 +540,12 @@ namespace ResumeBuilder.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(128)");
 
+                    b.Property<string>("ResumeId")
+                        .HasColumnType("varchar(68)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("References");
                 });
@@ -810,7 +832,12 @@ namespace ResumeBuilder.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(128)");
 
+                    b.Property<string>("ResumeId")
+                        .HasColumnType("varchar(68)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ResumeId");
 
                     b.ToTable("Skills");
                 });
@@ -866,11 +893,39 @@ namespace ResumeBuilder.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ResumeBuilder.Data.Entities.CommunityService", b =>
+                {
+                    b.HasOne("ResumeBuilder.Data.Entities.Resume", null)
+                        .WithMany("CommunityServices")
+                        .HasForeignKey("ResumeId");
+                });
+
+            modelBuilder.Entity("ResumeBuilder.Data.Entities.Education", b =>
+                {
+                    b.HasOne("ResumeBuilder.Data.Entities.Resume", null)
+                        .WithMany("Education")
+                        .HasForeignKey("ResumeId");
+                });
+
+            modelBuilder.Entity("ResumeBuilder.Data.Entities.Language", b =>
+                {
+                    b.HasOne("ResumeBuilder.Data.Entities.Resume", null)
+                        .WithMany("Languages")
+                        .HasForeignKey("ResumeId");
+                });
+
             modelBuilder.Entity("ResumeBuilder.Data.Entities.Link", b =>
                 {
                     b.HasOne("ResumeBuilder.Data.Entities.PersonalProfile", null)
                         .WithMany("Links")
                         .HasForeignKey("PersonalProfileId");
+                });
+
+            modelBuilder.Entity("ResumeBuilder.Data.Entities.Reference", b =>
+                {
+                    b.HasOne("ResumeBuilder.Data.Entities.Resume", null)
+                        .WithMany("References")
+                        .HasForeignKey("ResumeId");
                 });
 
             modelBuilder.Entity("ResumeBuilder.Data.Entities.Resume", b =>
@@ -909,7 +964,7 @@ namespace ResumeBuilder.Data.Migrations
                         .HasForeignKey("CommunityServiceId");
 
                     b.HasOne("ResumeBuilder.Data.Entities.Resume", "Resume")
-                        .WithMany("CommunityServices")
+                        .WithMany()
                         .HasForeignKey("ResumeId");
                 });
 
@@ -920,7 +975,7 @@ namespace ResumeBuilder.Data.Migrations
                         .HasForeignKey("EducationId");
 
                     b.HasOne("ResumeBuilder.Data.Entities.Resume", "Resume")
-                        .WithMany("Education")
+                        .WithMany()
                         .HasForeignKey("ResumeId");
                 });
 
@@ -942,7 +997,7 @@ namespace ResumeBuilder.Data.Migrations
                         .HasForeignKey("LanguageId");
 
                     b.HasOne("ResumeBuilder.Data.Entities.Resume", "Resume")
-                        .WithMany("Languages")
+                        .WithMany()
                         .HasForeignKey("ResumeId");
                 });
 
@@ -953,19 +1008,26 @@ namespace ResumeBuilder.Data.Migrations
                         .HasForeignKey("ReferenceId");
 
                     b.HasOne("ResumeBuilder.Data.Entities.Resume", "Resume")
-                        .WithMany("References")
+                        .WithMany()
                         .HasForeignKey("ResumeId");
                 });
 
             modelBuilder.Entity("ResumeBuilder.Data.Entities.ResumeSkills", b =>
                 {
                     b.HasOne("ResumeBuilder.Data.Entities.Resume", "Resume")
-                        .WithMany("Skills")
+                        .WithMany()
                         .HasForeignKey("ResumeId");
 
                     b.HasOne("ResumeBuilder.Data.Entities.Skill", "Skill")
                         .WithMany("Resumes")
                         .HasForeignKey("SkillId");
+                });
+
+            modelBuilder.Entity("ResumeBuilder.Data.Entities.Skill", b =>
+                {
+                    b.HasOne("ResumeBuilder.Data.Entities.Resume", null)
+                        .WithMany("Skills")
+                        .HasForeignKey("ResumeId");
                 });
 #pragma warning restore 612, 618
         }

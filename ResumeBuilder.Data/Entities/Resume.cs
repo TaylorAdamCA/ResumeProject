@@ -21,14 +21,14 @@ namespace ResumeBuilder.Data.Entities
 
         public ICollection<ResumeCertifications> Certifications { get; set; }
 
-        public ICollection<CommunityService> CommunityServices { get; set; }
+        public ICollection<ResumeCommunityService> CommunityServices { get; set; }
 
-        public ICollection<Education> Education { get; set; }
+        public ICollection<ResumeEducation> Education { get; set; }
 
-        public ICollection<Language> Languages { get; set; }
+        public ICollection<ResumeLanguage> Languages { get; set; }
 
-        public ICollection<Reference> References { get; set; }
+        public ICollection<ResumeReferences> References { get; set; }
 
-        public ICollection<Skill> Skills { get; set; }
+        public ICollection<ResumeSkills> Skills { get; set; }
     }
 }

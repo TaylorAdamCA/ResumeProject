@@ -25,5 +25,13 @@ namespace ResumeBuilder.Data
         public DbSet<Reference> References { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Resume> Resumes { get; set; }
+        public DbSet<ResumeAchievements> ResumeAchievements { get; set; }
+        public DbSet<ResumeCertifications> ResumeCertifications { get; set; }
+        public DbSet<ResumeCommunityService> ResumeCommunityServices { get; set; }
+        public DbSet<ResumeEducation> ResumeEducation { get; set; }
+        public DbSet<ResumeExperience> ResumeExperiences { get; set; }
+        public DbSet<ResumeLanguage> ResumeLanguages { get; set; }
+        public DbSet<ResumeReferences> ResumeReferences { get; set; }
+        public DbSet<ResumeSkills> ResumeSkills { get; set; }
     }
 }
