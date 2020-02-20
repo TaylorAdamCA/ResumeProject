@@ -14,5 +14,7 @@ namespace ResumeBuilder.Data.Entities
 
         [Required]
         public string Description { get; set; }
+
+        public ICollection<ResumeSkills> Resumes { get; set; }
     }
 }

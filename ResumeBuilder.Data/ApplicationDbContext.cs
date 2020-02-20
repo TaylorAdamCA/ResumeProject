@@ -24,5 +24,6 @@ namespace ResumeBuilder.Data
         public DbSet<Link> Links { get; set; }
         public DbSet<Reference> References { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Resume> Resumes { get; set; }
     }
 }

@@ -21,5 +21,7 @@ namespace ResumeBuilder.Data.Entities
         public DateTime EndDate { get; set; }
 
         public string AdditionalInfo { get; set; }
+
+        public ICollection<ResumeExperience> Resumes { get; set; }
     }
 }

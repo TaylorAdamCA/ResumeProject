@@ -22,5 +22,7 @@ namespace ResumeBuilder.Data.Entities
 
         [Required]
         public DateTime DateReceived { get; set; }
+
+        public ICollection<ResumeCertifications> Resumes { get; set; }
     }
 }

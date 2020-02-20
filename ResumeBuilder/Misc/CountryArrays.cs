@@ -1,4 +1,7 @@
-﻿namespace ResumeBuilder.Misc
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore.Internal;
+
+namespace ResumeBuilder.Misc
 {
     public static class CountryArrays
     {
@@ -493,5 +496,16 @@
     "ZM",
     "ZW"
         };
+
+        /// <summary>
+        /// Gets the abbreviation of the country
+        /// </summary>
+        /// <param name="country"></param>
+        /// <returns></returns>
+        public static string GetCountryAbbriviation(string country)
+        {
+            int index = Names.IndexOf(country);
+            return Abbreviations[index];
+        }
     };
 }

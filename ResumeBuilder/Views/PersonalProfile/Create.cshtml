@@ -5,8 +5,8 @@
     ViewData["Title"] = "View";
     var countriesList = CountryArrays.Names.Select((a, i) => new SelectListItem
     {
-        Value = CountryArrays.Abbreviations[i],
-        Text = a
+        Value = i.ToString(),
+        Text = a,
     }).ToList();
 }
 
@@ -44,8 +44,8 @@
                 <span asp-validation-for="Address" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Country" class="control-label"></label>
-                <select asp-items="countriesList"></select>
+                <label asp-for="CountryIndex" class="control-label"></label>
+                <select asp-for="CountryIndex" asp-items="countriesList"></select>
             </div>
             <div class="form-group">
                 <label asp-for="PostalCode" class="control-label"></label>

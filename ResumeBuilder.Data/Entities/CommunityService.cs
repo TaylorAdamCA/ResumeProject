@@ -22,5 +22,7 @@ namespace ResumeBuilder.Data.Entities
         /// Not required, if left null assume its continual
         /// </summary>
         public DateTime EndDate { get; set; }
+
+        public ICollection<ResumeCommunityService> Resumes { get; set; }
     }
 }

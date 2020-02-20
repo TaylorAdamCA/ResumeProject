@@ -33,13 +33,26 @@ namespace ResumeBuilder
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddDefaultIdentity<IdentityUser>(options =>
+                {
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.SignIn.RequireConfirmedAccount = true;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddAuthentication() // Sets the default scheme to cookies
+                .AddCookie(options =>
+               {
+                   options.ExpireTimeSpan = TimeSpan.FromDays(7);
+                   options.AccessDeniedPath = "/account/denied";
+                   options.LoginPath = "/account/login";
+               });
+
             // Services
             services.AddTransient<IPersonalProfileService, PersonalProfileService>();
+            services.AddTransient<IResumeService, ResumeService>();
             services.AddAutoMapper(typeof(Startup));
         }
 

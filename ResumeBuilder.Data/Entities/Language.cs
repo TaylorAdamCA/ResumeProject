@@ -15,5 +15,7 @@ namespace ResumeBuilder.Data.Entities
         [Required]
         [Column(TypeName = "varchar(128)")]
         public string Proficiency { get; set; }
+
+        public ICollection<ResumeLanguage> Resumes { get; set; }
     }
 }
