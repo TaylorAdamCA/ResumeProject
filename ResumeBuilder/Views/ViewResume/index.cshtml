@@ -1,0 +1,43 @@
+﻿ @{
+    Layout = "";
+    }
+
+<!DOCTYPE html>
+<html style="font-family: 'Source Serif Pro', serif;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Template1</title>
+    <link rel="stylesheet" href="~/templates/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+Pro">
+    <link rel="stylesheet" href="~/templates/assets/css/styles.css">
+</head>
+
+<body style="opacity: 1;margin-right: 0;padding-right: 80px;padding-left: 80px;">
+    <h1 class="text-center" style="font-family: 'Source Serif Pro', serif;">{{Name}}</h1>
+    <p class="text-center" style="margin: -4px;font-family: 'Source Serif Pro', serif;">{{Email }} - {{ PhoneNumber}} - {{Address}}. {{City}}, {{State}}. {{Country}}</p>
+    <p class="text-center" style="font-family: 'Source Serif Pro', serif;">{{PostalCode}}</p>
+    <p class="text-center" style="margin: -19px;font-family: 'Source Serif Pro', serif;">{{Links}}</p>
+    <hr style="margin: 40px;height: 0px;font-size: 16px;">
+    <div class="row">
+        <div class="col">
+            <h2 class="text-center" style="font-size: 21px;margin: -28px;font-family: 'Source Serif Pro', serif;">{{SectionTitle}}</h2>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>{{Title}}</h5>
+                    <h6 style="margin: 0px;margin-top: -10px;">{{Company}}</h6>
+                    <h6 style="margin: -0;">{{City}}, {{State}}. {{StartDate}} - {{EndDate}}</h6>
+                    <p>{{AdditionalInfo }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/templates/assets/js/jquery.min.js"></script>
+    <script src="~/templates/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
