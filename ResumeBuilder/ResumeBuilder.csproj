@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Views\ViewResume\index.cshtml" />
+    <None Include="Views\ViewResume\ViewResume.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

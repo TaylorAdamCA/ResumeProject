@@ -1,0 +1,59 @@
+﻿@model ResumeBuilder.Models.ViewModels.Resume.ResumeViewModel
+
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html style="font-family: 'Source Serif Pro', serif;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Template1</title>
+    <link rel="stylesheet" href="~/templates/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Serif+Pro">
+    <link rel="stylesheet" href="~/templates/assets/css/styles.css">
+</head>
+
+<body style="opacity: 1;margin-right: 0;padding-right: 80px;padding-left: 80px;">
+
+    @if (@Model.PersonalProfile != null)
+    {
+
+        <h1 class="text-center" style="font-family: 'Source Serif Pro', serif;">@Model.PersonalProfile.FirstName</h1>
+        <p class="text-center" style="margin: -4px;font-family: 'Source Serif Pro', serif;">@Model.PersonalProfile.EmailAddress - @Model.PersonalProfile.PhoneNumber - @Model.PersonalProfile.Address. @Model.PersonalProfile.City, @Model.PersonalProfile.State. @Model.PersonalProfile.Country.</p>
+        <p class="text-center" style="font-family: 'Source Serif Pro', serif;"> @Model.PersonalProfile.PostalCode</p>
+        <p class="text-center" style="margin: -19px;font-family: 'Source Serif Pro', serif;">{{Links}}</p>
+        <hr style="margin: 40px;height: 0px;font-size: 16px;">
+
+    }
+
+    @if (@Model.Experience != null)
+    {
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center" style="font-size: 21px;margin: -28px;font-family: 'Source Serif Pro', serif;">Experience</h2>
+            </div>
+        </div>
+        @foreach (var experience in @Model.Experience.ToList())
+        {
+            <div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>@experience.Title</h5>
+                            <h6 style="margin: 0px;margin-top: -10px;">@experience.Company</h6>
+                            <h6 style="margin: -0;">@experience.City, @experience.State. @experience.StartDate - @experience.GetEndDate()</h6>
+                            <p> @experience.AdditionalInfo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+
+    <script src="~/templates/assets/js/jquery.min.js"></script>
+    <script src="~/templates/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

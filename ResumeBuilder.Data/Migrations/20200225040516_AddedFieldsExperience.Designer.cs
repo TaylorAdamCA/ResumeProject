@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ResumeBuilder.Data;
 
 namespace ResumeBuilder.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200225040516_AddedFieldsExperience")]
+    partial class AddedFieldsExperience
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -458,10 +460,6 @@ namespace ResumeBuilder.Data.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(256)");
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("varchar(256)");
-
                     b.Property<string>("ContextId")
                         .HasColumnType("varchar(68)");
 
@@ -497,10 +495,6 @@ namespace ResumeBuilder.Data.Migrations
                     b.Property<string>("PostalCode")
                         .IsRequired()
                         .HasColumnType("varchar(32)");
-
-                    b.Property<string>("State")
-                        .IsRequired()
-                        .HasColumnType("varchar(256)");
 
                     b.HasKey("Id");
 

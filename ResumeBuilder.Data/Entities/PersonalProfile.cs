@@ -28,6 +28,14 @@ namespace ResumeBuilder.Data.Entities
         public string Address { get; set; }
 
         [Required]
+        [Column(TypeName = "varchar(256)")]
+        public string City { get; set; }
+
+        [Required]
+        [Column(TypeName = "varchar(256)")]
+        public string State { get; set; }
+
+        [Required]
         [Column(TypeName = "varchar(74)")]
         public string Country { get; set; }
 

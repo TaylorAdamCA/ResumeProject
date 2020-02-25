@@ -33,6 +33,14 @@ namespace ResumeBuilder.Models.ViewModels
         public string Address { get; set; }
 
         [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Required]
         [Display(Name = "Country")]
         public string CountryIndex { get; set; }
 

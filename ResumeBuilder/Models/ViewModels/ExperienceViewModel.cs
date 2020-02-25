@@ -31,11 +31,29 @@ namespace ResumeBuilder.Models.ViewModels
         public DateTime? EndDate { get; set; }
 
         [Required]
+        [Display(Name = "City")]
+        public string City { get; set; }
+
+        [Required]
+        [Display(Name = "State")]
+        public string State { get; set; }
+
+        [Required]
+        [Display(Name = "Company")]
+        public string Company { get; set; }
+
+        [Required]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Additional Info/ Description of Duties")]
         public string AdditionalInfo { get; set; }
 
         [HiddenInput]
         public string ResumeId { get; set; }
+
+        /// <summary>
+        /// Gets the end date if there is one, other wise assumes you still work here
+        /// </summary>
+        /// <returns></returns>
+        public string GetEndDate() => EndDate == null ? "Present" : EndDate.ToString();
     }
 }

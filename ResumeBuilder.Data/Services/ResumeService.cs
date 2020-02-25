@@ -80,7 +80,7 @@ namespace ResumeBuilder.Data.Services
                 DateCreated = DateTime.Now,
                 DateUpdated = DateTime.Now,
                 Name = name,
-                PersonalProfile = null,
+                PersonalProfile = await _context.PersonalProfiles.Where(pp => pp.ContextId == contextId).FirstOrDefaultAsync(),
                 Experience = null,
                 Achievements = null,
                 Certifications = null,

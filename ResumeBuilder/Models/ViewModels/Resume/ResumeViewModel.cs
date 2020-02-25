@@ -7,12 +7,14 @@ namespace ResumeBuilder.Models.ViewModels.Resume
     {
         public string Name { get; set; }
 
+        public string Id { get; set; }
+
         // Add Templates in future
         public string Template => "Default";
 
         public PersonalProfile PersonalProfile { get; set; }
 
-        public List<Experience> Experience { get; set; }
+        public List<ExperienceViewModel> Experience { get; set; }
 
         public List<Achievement> Achievements { get; set; }
 
