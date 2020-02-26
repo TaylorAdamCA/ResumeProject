@@ -60,7 +60,7 @@ namespace ResumeBuilder.Controllers.Resume
         // GET: Resume/Edit/5
         public async Task<ActionResult> Edit(string id)
         {
-            return View(await _resumeService.FindIncludingAllAsync(r => r.Id == id));
+            return View(await _resumeService.FindIncludingAllAsync(r => r.Id == id, User.FindFirstValue(ClaimTypes.NameIdentifier)));
         }
     }
 }

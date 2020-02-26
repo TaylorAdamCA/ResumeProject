@@ -45,7 +45,7 @@
         {
             @foreach (var experience in Model.Experience.OrderBy(e => e.Experience.StartDate).ToList())
             {
-                <p> Personal info added, click @Html.ActionLink("here", "Edit", "PersonalProfile", new { id = Model.PersonalProfile.Id }) | to update it</p>
+                <p> Personal info added, click @Html.ActionLink("here", "Edit", "Experience", new { id = experience.Id }) | to update it</p>
             }
         }
         @Html.ActionLink("Add more experience", "Create", "Experience", new { ResumeId = Model.Id }, null)

@@ -12,10 +12,6 @@ namespace ResumeBuilder.Data.Services
         {
         }
 
-        /// <summary>
-        /// Maps the personal profile model to the view, might add DTO's in the future
-        /// </summary>
-
         public async Task<PersonalProfile> Create(string contextId, string firstName, string lastName,
             string phoneNumber, string emailAddress, string address, string country,
             string countryCode, string postalCode, List<Link> links)

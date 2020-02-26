@@ -19,6 +19,8 @@ namespace ResumeBuilder.Models
             CreateMap<Resume, ResumeViewModel>();
             CreateMap<Experience, ExperienceViewModel>();
             CreateMap<ExperienceViewModel, Experience>();
+            CreateMap<ResumeExperience, ExperienceViewModel>()
+                .ConstructUsing((s, ctx) => ctx.Mapper.Map<ExperienceViewModel>(s.Experience));
         }
     }
 }

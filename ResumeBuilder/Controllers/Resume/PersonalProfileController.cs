@@ -81,16 +81,35 @@ namespace ResumeBuilder.Controllers.Resume
                 var country = CountryArrays.Names[int.Parse(personalProfileModel.CountryIndex)];
                 var countryCode = CountryArrays.Abbreviations[int.Parse(personalProfileModel.CountryIndex)];
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                await _personalProfileService.Create(userId,
-                        personalProfileModel.FirstName,
-                        personalProfileModel.LastName,
-                        personalProfileModel.PhoneNumber,
-                        personalProfileModel.EmailAddress,
-                        personalProfileModel.Address,
-                        country,
-                        countryCode,
-                        personalProfileModel.PostalCode,
-                        personalProfileModel.Links).ConfigureAwait(true);
+
+                /// Maps the personal profile model to the viewmodel, might add DTO's in the future
+                PersonalProfile personalProfile = _mapper.Map<PersonalProfile>(personalProfileModel);
+                personalProfile.Country = country;
+                personalProfile.CountryCode = countryCode;
+                personalProfile.ContextId = userId;
+                personalProfile.Id = Guid.NewGuid().ToString();
+                personalProfile.DateUpdated = DateTime.Now;
+                personalProfile.DateCreated = DateTime.Now;
+
+                /*PersonalProfile personalProfile = new PersonalProfile
+                {
+                    Id =
+                    ContextId = userId,
+                    DateCreated = DateTime.Now,
+                    DateUpdated = DateTime.Now,
+                    FirstName = personalProfileModel.FirstName,
+                    LastName = personalProfileModel.LastName,
+                    PhoneNumber = personalProfileModel.PhoneNumber,
+                    EmailAddress = personalProfileModel.EmailAddress,
+                    Address = personalProfileModel.Address,
+                    Country = country,
+                    CountryCode = countryCode,
+                    City = personalProfileModel.City,
+                    State = personalProfileModel.State,
+                    PostalCode = personalProfileModel.PostalCode,
+                    Links = personalProfileModel.Links
+                };*/
+                await _personalProfileService.AddAsync(personalProfile);
             }
 
             return RedirectToAction(nameof(Index));

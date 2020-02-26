@@ -30,21 +30,29 @@ namespace ResumeBuilder.Data.Services
         {
             return await _context.Resumes
                 .Include(r => r.Achievements)
+                .ThenInclude(r => r.Achievement)
                 .Include(r => r.Certifications)
+                .ThenInclude(r => r.Certification)
                 .Include(r => r.CommunityServices)
+                .ThenInclude(r => r.CommunityService)
                 .Include(r => r.Education)
+                .ThenInclude(r => r.Education)
                 .Include(r => r.Experience)
+                .ThenInclude(r => r.Experience)
                 .Include(r => r.Languages)
+                .ThenInclude(r => r.Language)
                 .Include(r => r.PersonalProfile)
                 .Include(r => r.References)
+                .ThenInclude(r => r.Reference)
                 .Include(r => r.Skills)
+                .ThenInclude(r => r.Skill)
                 .Where(r => r.ContextId == contextId)
                 .ToListAsync();
         }
 
-        public async Task<Resume> FindIncludingAllAsync(Expression<Func<Resume, bool>> match)
+        public async Task<Resume> FindIncludingAllAsync(Expression<Func<Resume, bool>> match, string contextId)
         {
-            return await _context.Resumes
+            var resume = await _context.Resumes
                 .Include(r => r.Achievements)
                  .ThenInclude(r => r.Achievement)
                 .Include(r => r.Certifications)
@@ -63,6 +71,13 @@ namespace ResumeBuilder.Data.Services
                 .Include(r => r.Skills)
                  .ThenInclude(r => r.Skill)
                 .FirstOrDefaultAsync(match);
+            if (resume.PersonalProfile == null)
+            {
+                resume.PersonalProfile = await _context.PersonalProfiles.Where(pp => pp.ContextId == contextId)
+                    .FirstOrDefaultAsync();
+            }
+
+            return resume;
         }
 
         /// <summary>

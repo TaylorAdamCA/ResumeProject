@@ -38,7 +38,7 @@ namespace ResumeBuilder.Controllers.Resume
 
         public async Task<IActionResult> ViewResume(string resumeId)
         {
-            var resume = _mapper.Map<Data.Entities.Resume, ResumeViewModel>(await _resumeService.FindIncludingAllAsync(r => r.Id == resumeId));
+            var resume = _mapper.Map<Data.Entities.Resume, ResumeViewModel>(await _resumeService.FindIncludingAllAsync(r => r.Id == resumeId, User.FindFirstValue(ClaimTypes.NameIdentifier)));
             return View(resume);
         }
     }

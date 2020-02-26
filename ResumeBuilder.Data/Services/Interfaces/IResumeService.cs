@@ -15,6 +15,6 @@ namespace ResumeBuilder.Data.Services.Interfaces
 
         Task AddExperienceToResume(string resumeId, string contextId, Experience experience);
 
-        Task<Resume> FindIncludingAllAsync(Expression<Func<Resume, bool>> match);
+        Task<Resume> FindIncludingAllAsync(Expression<Func<Resume, bool>> match, string contextId);
     }
 }

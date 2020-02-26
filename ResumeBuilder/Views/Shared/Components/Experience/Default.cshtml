@@ -1,0 +1,14 @@
+﻿@model ResumeBuilder.Models.ViewModels.ExperienceViewModel
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5>@Model.Title</h5>
+                <h6 style="margin: 0px;margin-top: -10px;">@Model.Company</h6>
+                <h6 style="margin: -0;">@Model.City, @Model.State. @Model.StartDate - @Model.GetEndDate()</h6>
+                <p> @Model.AdditionalInfo</p>
+            </div>
+        </div>
+    </div>
+</div>
